@@ -22,22 +22,14 @@ public class ProductController {
     
     @GetMapping
     public ResponseEntity getAllProducts(){
-        try{
-             List<Product> listProducts = service.getAllProducts();
-             return ResponseEntity.status(HttpStatus.OK).body(listProducts);
-        } catch(Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
-        }
+        List<Product> listProducts = service.getAllProducts();
+        return ResponseEntity.status(HttpStatus.OK).body(listProducts);
     }
 
     @PostMapping
     public ResponseEntity postProduct(@RequestBody Product product){
-        try{
-             service.postProduct(product);
-             return ResponseEntity.status(HttpStatus.OK).body("Cadastro realizado com sucesso");
-        } catch(Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
-        }
+        service.postProduct(product);
+        return ResponseEntity.status(HttpStatus.OK).body("Cadastro realizado com sucesso");      
     }
 
 }
